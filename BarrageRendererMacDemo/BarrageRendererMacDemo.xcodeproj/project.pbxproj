@@ -13,6 +13,13 @@
 		082516E3255BF21D003E8767 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 082516E1255BF21D003E8767 /* Main.storyboard */; };
 		082516E6255BF21D003E8767 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 082516E5255BF21D003E8767 /* main.m */; };
 		08364E5C255E1F4C009D781C /* NSImage+Barrage.m in Sources */ = {isa = PBXBuildFile; fileRef = 08364E5B255E1F4C009D781C /* NSImage+Barrage.m */; };
+		08364E66255E67F3009D781C /* rb_img_barrage_dressup_v2_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 08364E60255E67F2009D781C /* rb_img_barrage_dressup_v2_1.png */; };
+		08364E67255E67F3009D781C /* rb_img_barrage_dressup_v3_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 08364E61255E67F2009D781C /* rb_img_barrage_dressup_v3_1.png */; };
+		08364E68255E67F3009D781C /* rb_img_barrage_dressup_v2_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 08364E62255E67F2009D781C /* rb_img_barrage_dressup_v2_2.png */; };
+		08364E69255E67F3009D781C /* rb_img_barrage_dressup_v3_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 08364E63255E67F2009D781C /* rb_img_barrage_dressup_v3_2.png */; };
+		08364E6A255E67F3009D781C /* rb_img_barrage_dressup_v3_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 08364E64255E67F2009D781C /* rb_img_barrage_dressup_v3_3.png */; };
+		08364E6B255E67F3009D781C /* rb_img_barrage_dressup_v2_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 08364E65255E67F2009D781C /* rb_img_barrage_dressup_v2_3.png */; };
+		08364E71255E6949009D781C /* AvatarFrameBarrageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08364E70255E6949009D781C /* AvatarFrameBarrageView.swift */; };
 		088D2524255CE584005EF730 /* NSSafeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 088D2522255CE584005EF730 /* NSSafeObject.m */; };
 		088D252C255D2F21005EF730 /* avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 088D252B255D2F21005EF730 /* avatar.png */; };
 		088D252F255D31E0005EF730 /* AvatarBarrageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 088D252D255D31DF005EF730 /* AvatarBarrageView.m */; };
@@ -33,6 +40,14 @@
 		082516E7255BF21D003E8767 /* BarrageRendererMacDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BarrageRendererMacDemo.entitlements; sourceTree = "<group>"; };
 		08364E5A255E1F4C009D781C /* NSImage+Barrage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+Barrage.h"; sourceTree = "<group>"; };
 		08364E5B255E1F4C009D781C /* NSImage+Barrage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+Barrage.m"; sourceTree = "<group>"; };
+		08364E60255E67F2009D781C /* rb_img_barrage_dressup_v2_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rb_img_barrage_dressup_v2_1.png; sourceTree = "<group>"; };
+		08364E61255E67F2009D781C /* rb_img_barrage_dressup_v3_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rb_img_barrage_dressup_v3_1.png; sourceTree = "<group>"; };
+		08364E62255E67F2009D781C /* rb_img_barrage_dressup_v2_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rb_img_barrage_dressup_v2_2.png; sourceTree = "<group>"; };
+		08364E63255E67F2009D781C /* rb_img_barrage_dressup_v3_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rb_img_barrage_dressup_v3_2.png; sourceTree = "<group>"; };
+		08364E64255E67F2009D781C /* rb_img_barrage_dressup_v3_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rb_img_barrage_dressup_v3_3.png; sourceTree = "<group>"; };
+		08364E65255E67F2009D781C /* rb_img_barrage_dressup_v2_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rb_img_barrage_dressup_v2_3.png; sourceTree = "<group>"; };
+		08364E6F255E6949009D781C /* BarrageRendererMacDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BarrageRendererMacDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		08364E70255E6949009D781C /* AvatarFrameBarrageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarFrameBarrageView.swift; sourceTree = "<group>"; };
 		088D2522255CE584005EF730 /* NSSafeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSSafeObject.m; sourceTree = "<group>"; };
 		088D2523255CE584005EF730 /* NSSafeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSSafeObject.h; sourceTree = "<group>"; };
 		088D252B255D2F21005EF730 /* avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = avatar.png; path = ../../BarrageRendererDemo/BarrageRendererDemo/avatar.png; sourceTree = "<group>"; };
@@ -87,6 +102,12 @@
 			isa = PBXGroup;
 			children = (
 				082516D9255BF21C003E8767 /* AppDelegate.h */,
+				08364E60255E67F2009D781C /* rb_img_barrage_dressup_v2_1.png */,
+				08364E62255E67F2009D781C /* rb_img_barrage_dressup_v2_2.png */,
+				08364E65255E67F2009D781C /* rb_img_barrage_dressup_v2_3.png */,
+				08364E61255E67F2009D781C /* rb_img_barrage_dressup_v3_1.png */,
+				08364E63255E67F2009D781C /* rb_img_barrage_dressup_v3_2.png */,
+				08364E64255E67F2009D781C /* rb_img_barrage_dressup_v3_3.png */,
 				088D252B255D2F21005EF730 /* avatar.png */,
 				082516DA255BF21C003E8767 /* AppDelegate.m */,
 				08364E5A255E1F4C009D781C /* NSImage+Barrage.h */,
@@ -95,6 +116,7 @@
 				088D252D255D31DF005EF730 /* AvatarBarrageView.m */,
 				088D2531255D387E005EF730 /* FlowerBarrageSprite.h */,
 				088D2530255D387E005EF730 /* FlowerBarrageSprite.m */,
+				08364E70255E6949009D781C /* AvatarFrameBarrageView.swift */,
 				088D2521255CE584005EF730 /* SafeObject */,
 				082516DC255BF21C003E8767 /* ViewController.h */,
 				082516DD255BF21C003E8767 /* ViewController.m */,
@@ -103,6 +125,7 @@
 				082516E4255BF21D003E8767 /* Info.plist */,
 				082516E5255BF21D003E8767 /* main.m */,
 				082516E7255BF21D003E8767 /* BarrageRendererMacDemo.entitlements */,
+				08364E6F255E6949009D781C /* BarrageRendererMacDemo-Bridging-Header.h */,
 			);
 			path = BarrageRendererMacDemo;
 			sourceTree = "<group>";
@@ -159,6 +182,7 @@
 				TargetAttributes = {
 					082516D5255BF21C003E8767 = {
 						CreatedOnToolsVersion = 11.4;
+						LastSwiftMigration = 1140;
 					};
 				};
 			};
@@ -185,9 +209,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08364E68255E67F3009D781C /* rb_img_barrage_dressup_v2_2.png in Resources */,
 				088D252C255D2F21005EF730 /* avatar.png in Resources */,
+				08364E66255E67F3009D781C /* rb_img_barrage_dressup_v2_1.png in Resources */,
+				08364E67255E67F3009D781C /* rb_img_barrage_dressup_v3_1.png in Resources */,
+				08364E6A255E67F3009D781C /* rb_img_barrage_dressup_v3_3.png in Resources */,
 				082516E0255BF21D003E8767 /* Assets.xcassets in Resources */,
+				08364E6B255E67F3009D781C /* rb_img_barrage_dressup_v2_3.png in Resources */,
 				082516E3255BF21D003E8767 /* Main.storyboard in Resources */,
+				08364E69255E67F3009D781C /* rb_img_barrage_dressup_v3_2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08364E71255E6949009D781C /* AvatarFrameBarrageView.swift in Sources */,
 				088D2532255D387E005EF730 /* FlowerBarrageSprite.m in Sources */,
 				08364E5C255E1F4C009D781C /* NSImage+Barrage.m in Sources */,
 				082516DE255BF21C003E8767 /* ViewController.m in Sources */,
@@ -378,6 +409,7 @@
 			baseConfigurationReference = 5AF8168561C1040EED1A980E /* Pods-BarrageRendererMacDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = BarrageRendererMacDemo/BarrageRendererMacDemo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -388,6 +420,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ml.BarrageRendererMacDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BarrageRendererMacDemo/BarrageRendererMacDemo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -396,6 +431,7 @@
 			baseConfigurationReference = 9576378D660DB0A45DE066DA /* Pods-BarrageRendererMacDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = BarrageRendererMacDemo/BarrageRendererMacDemo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -406,6 +442,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ml.BarrageRendererMacDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BarrageRendererMacDemo/BarrageRendererMacDemo-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

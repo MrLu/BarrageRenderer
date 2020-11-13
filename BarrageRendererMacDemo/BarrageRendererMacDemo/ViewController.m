@@ -11,6 +11,7 @@
 #import "NSSafeObject.h"
 #import "AvatarBarrageView.h"
 #import "FlowerBarrageSprite.h"
+#import "BarrageRendererMacDemo-Swift.h"
 
 @interface ViewController()<BarrageRendererDelegate>
 {
@@ -71,23 +72,26 @@
     if (spriteNumber <= 500) { // 用来演示如何限制屏幕上的弹幕量
         [_renderer receive:[self walkTextSpriteDescriptorWithDirection:BarrageWalkDirectionR2L side:BarrageWalkSideLeft]];
         [_renderer receive:[self walkTextSpriteDescriptorWithDirection:BarrageWalkDirectionR2L side:BarrageWalkSideDefault]];
-
-        [_renderer receive:[self walkTextSpriteDescriptorWithDirection:BarrageWalkDirectionB2T side:BarrageWalkSideLeft]];
-        [_renderer receive:[self walkTextSpriteDescriptorWithDirection:BarrageWalkDirectionB2T side:BarrageWalkSideRight]];
+//
+//        [_renderer receive:[self walkTextSpriteDescriptorWithDirection:BarrageWalkDirectionB2T side:BarrageWalkSideLeft]];
+//        [_renderer receive:[self walkTextSpriteDescriptorWithDirection:BarrageWalkDirectionB2T side:BarrageWalkSideRight]];
+//
+//        [_renderer receive:[self flowerImageSpriteDescriptor]];
+//
+//        [_renderer receive:[self avatarBarrageViewSpriteDescriptorWithDirection:BarrageWalkDirectionR2L side:BarrageWalkSideDefault]];
+//        [_renderer receive:[self avatarBarrageViewSpriteDescriptorWithDirection:BarrageWalkDirectionR2L side:BarrageWalkSideDefault]];
         
-        [_renderer receive:[self flowerImageSpriteDescriptor]];
-
-        [_renderer receive:[self avatarBarrageViewSpriteDescriptorWithDirection:BarrageWalkDirectionR2L side:BarrageWalkSideDefault]];
-        [_renderer receive:[self avatarBarrageViewSpriteDescriptorWithDirection:BarrageWalkDirectionR2L side:BarrageWalkSideDefault]];
+        [_renderer receive:[self avatarFrameBarrageViewSpriteDescriptorWithDirection:BarrageWalkDirectionR2L side:BarrageWalkSideDefault]];
+        [_renderer receive:[self avatarFrameBarrageViewSpriteDescriptorWithDirection:BarrageWalkDirectionR2L side:BarrageWalkSideDefault]];
         
-        [_renderer receive:[self floatTextSpriteDescriptorWithDirection:BarrageFloatDirectionB2T side:BarrageFloatSideCenter]];
-        [_renderer receive:[self floatTextSpriteDescriptorWithDirection:BarrageFloatDirectionT2B side:BarrageFloatSideLeft]];
-        [_renderer receive:[self floatTextSpriteDescriptorWithDirection:BarrageFloatDirectionT2B side:BarrageFloatSideRight]];
-        
-        [_renderer receive:[self walkImageSpriteDescriptorWithDirection:BarrageWalkDirectionL2R]];
-        [_renderer receive:[self walkImageSpriteDescriptorWithDirection:BarrageWalkDirectionL2R]];
-        
-        [_renderer receive:[self floatImageSpriteDescriptorWithDirection:BarrageFloatDirectionT2B]];
+//        [_renderer receive:[self floatTextSpriteDescriptorWithDirection:BarrageFloatDirectionB2T side:BarrageFloatSideCenter]];
+//        [_renderer receive:[self floatTextSpriteDescriptorWithDirection:BarrageFloatDirectionT2B side:BarrageFloatSideLeft]];
+//        [_renderer receive:[self floatTextSpriteDescriptorWithDirection:BarrageFloatDirectionT2B side:BarrageFloatSideRight]];
+//
+//        [_renderer receive:[self walkImageSpriteDescriptorWithDirection:BarrageWalkDirectionL2R]];
+//        [_renderer receive:[self walkImageSpriteDescriptorWithDirection:BarrageWalkDirectionL2R]];
+//
+//        [_renderer receive:[self floatImageSpriteDescriptorWithDirection:BarrageFloatDirectionT2B]];
     }
 }
 
@@ -133,6 +137,29 @@
     descriptor.params[@"viewClassName"] = NSStringFromClass([AvatarBarrageView class]);
     descriptor.params[@"titles"] = (_index%2) ? titles1: titles2;
 
+    __weak BarrageRenderer *render = _renderer;
+    descriptor.params[@"clickAction"] = ^(NSDictionary *params){
+        [render removeSpriteWithIdentifier:params[@"identifier"]];
+    };
+
+    return descriptor;
+}
+
+/// 演示自定义弹幕样式
+- (BarrageDescriptor *)avatarFrameBarrageViewSpriteDescriptorWithDirection:(BarrageWalkDirection)direction side:(BarrageWalkSide)side
+{
+    BarrageDescriptor * descriptor = [[BarrageDescriptor alloc]init];
+    descriptor.spriteName = NSStringFromClass([BarrageWalkSprite class]);
+    descriptor.params[@"speed"] = @(100 * (double)random()/RAND_MAX+50);
+    descriptor.params[@"direction"] = @(direction);
+    descriptor.params[@"side"] = @(side);
+    descriptor.params[@"viewClassName"] = NSStringFromClass([AvatarFrameBarrageView class]);
+    descriptor.params[@"title"] = @"到此一游";
+    NSInteger index = (arc4random()%2);
+    descriptor.params[@"themeId"] = index ? @(2) : @(3);
+    descriptor.params[@"hSize"] = index ? @(CGSizeMake(36, 36)) : @(CGSizeMake(36, 36)) ;
+    descriptor.params[@"mSize"] = index ? @(CGSizeMake(8, 36)) : @(CGSizeMake(8, 36));
+    descriptor.params[@"tSize"] = index ? @(CGSizeMake(26, 36)) : @(CGSizeMake(26, 36));
     __weak BarrageRenderer *render = _renderer;
     descriptor.params[@"clickAction"] = ^(NSDictionary *params){
         [render removeSpriteWithIdentifier:params[@"identifier"]];
