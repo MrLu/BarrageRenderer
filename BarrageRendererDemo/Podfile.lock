@@ -8,6 +8,11 @@ DEPENDENCIES:
   - BarrageRenderer (from `../`)
   - MLEmojiLabel (= 1.0.0)
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - MLEmojiLabel
+    - TTTAttributedLabel
+
 EXTERNAL SOURCES:
   BarrageRenderer:
     :path: "../"
@@ -17,6 +22,6 @@ SPEC CHECKSUMS:
   MLEmojiLabel: ceeab17d10d296cc00636bf201c8da597fdede10
   TTTAttributedLabel: 0a2ac7b2dd726d32a070dafb01446026b11e624f
 
-PODFILE CHECKSUM: 775706bdffb2cc4ec819b5f702cfaa18a6859f5f
+PODFILE CHECKSUM: 7325a51226bcff662aee09afe5fe0b566bc3c6e2
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.7.4

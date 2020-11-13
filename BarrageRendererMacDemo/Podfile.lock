@@ -1,0 +1,16 @@
+PODS:
+  - BarrageRendererMac (0.0.1)
+
+DEPENDENCIES:
+  - BarrageRendererMac (from `../`)
+
+EXTERNAL SOURCES:
+  BarrageRendererMac:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  BarrageRendererMac: 8761f58ad824641958217ff681ce6ff11eec635d
+
+PODFILE CHECKSUM: dc8ccd589449f45cea4f95f3d73bca2449431567
+
+COCOAPODS: 1.7.4
