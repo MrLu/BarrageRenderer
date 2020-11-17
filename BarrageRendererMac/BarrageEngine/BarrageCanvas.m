@@ -44,7 +44,7 @@
 {
     [super layout];
     if (self.superview) {
-        CGRect frame = CGRectMake(self.superview.bounds.origin.x - self.margin.left, self.superview.bounds.origin.y - self.margin.top,  self.superview.bounds.size.width - self.margin.left - self.margin.right, self.superview.bounds.size.height - self.margin.top - self.margin.bottom);
+        CGRect frame = CGRectMake(self.superview.bounds.origin.x + self.margin.left, self.superview.bounds.origin.y + self.margin.top,  self.superview.bounds.size.width - self.margin.left - self.margin.right, self.superview.bounds.size.height - self.margin.top - self.margin.bottom);
         if (!CGRectEqualToRect(self.frame, frame)) {
             self.frame = frame;
         }
@@ -53,7 +53,7 @@
 
 - (void)setMargin:(NSEdgeInsets)margin
 {
-    if(!NSEdgeInsetsEqual(margin, margin))
+    if(!NSEdgeInsetsEqual(_margin, margin))
     {
         _margin = margin;
         [self setNeedsLayout:true];
