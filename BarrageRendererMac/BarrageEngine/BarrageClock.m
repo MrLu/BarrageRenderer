@@ -26,11 +26,12 @@
 
 #import "BarrageClock.h"
 #import <QuartzCore/CABase.h>
+#import "BarrageDisplayLink.h"
 
 @interface BarrageClock()
 {
     void (^_block)(NSTimeInterval time);
-    NSTimer * _timer; // 周期
+    BarrageDisplayLink * _displayLink; // 周期
     CFTimeInterval _previousDate; // 上一次更新时间
     CGFloat _pausedSpeed; // 暂停之前的时间流速
 }
@@ -58,13 +59,13 @@
 
 - (void)reset
 {
-    _timer = [NSTimer scheduledTimerWithTimeInterval:1.0/60.0 target:self selector:@selector(update) userInfo:nil repeats:true];
+    _displayLink = [BarrageDisplayLink displayLinkWithTarget:self selector:@selector(update:)];
     _speed = 1.0f;
     _pausedSpeed = _speed;
     self.launched = NO;
 }
 
-- (void)update
+- (void)update:(BarrageDisplayLink *)displayLink
 {
     [self updateTime];
     _block(self.time);
@@ -72,7 +73,7 @@
 
 - (void)start
 {
-    if (!_timer) {
+    if (!_displayLink) {
         [self reset];
     }
     
@@ -80,7 +81,8 @@
         _speed = _pausedSpeed;
     } else {
         _previousDate = CACurrentMediaTime();
-        [[NSRunLoop mainRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+        [_displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+        [_displayLink start];
         self.launched = YES;
     }
 }
@@ -102,8 +104,8 @@
 
 - (void)stop
 {
-    [_timer invalidate];
-    _timer = nil;
+    [_displayLink stop];
+    _displayLink = nil;
 }
 
 /// 更新逻辑时间系统
