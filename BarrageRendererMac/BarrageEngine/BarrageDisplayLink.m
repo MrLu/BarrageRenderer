@@ -8,13 +8,13 @@
 #import <TargetConditionals.h>
 #import "BarrageDisplayLink.h"
 #import "BarrageWeakProxy.h"
-#if TARGET_OS_OSX
+#if IS_MAC
 #import <CoreVideo/CoreVideo.h>
 #elif TARGET_OS_IOS || TARGET_OS_TV
 #import <QuartzCore/QuartzCore.h>
 #endif
 
-#if TARGET_OS_OSX
+#if IS_MAC
 static CVReturn DisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeStamp *inNow, const CVTimeStamp *inOutputTime, CVOptionFlags flagsIn, CVOptionFlags *flagsOut, void *displayLinkContext);
 #endif
 
@@ -22,7 +22,7 @@ static CVReturn DisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
 
 @interface BarrageDisplayLink ()
 
-#if TARGET_OS_OSX
+#if IS_MAC
 @property (nonatomic, assign) CVDisplayLinkRef displayLink;
 @property (nonatomic, assign) CVTimeStamp outputTime;
 @property (nonatomic, copy) NSRunLoopMode runloopMode;
@@ -40,7 +40,7 @@ static CVReturn DisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
 @implementation BarrageDisplayLink
 
 - (void)dealloc {
-#if TARGET_OS_OSX
+#if IS_MAC
     if (_displayLink) {
         CVDisplayLinkRelease(_displayLink);
         _displayLink = NULL;
@@ -59,14 +59,14 @@ static CVReturn DisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
     if (self) {
         _target = target;
         _selector = sel;
-#if TARGET_OS_OSX
+#if IS_MAC
         CVDisplayLinkCreateWithActiveCGDisplays(&_displayLink);
         CVDisplayLinkSetOutputCallback(_displayLink, DisplayLinkCallback, (__bridge void *)self);
 #elif TARGET_OS_IOS || TARGET_OS_TV
-        SDWeakProxy *weakProxy = [SDWeakProxy proxyWithTarget:self];
+        BarrageWeakProxy *weakProxy = [BarrageWeakProxy proxyWithTarget:self];
         _displayLink = [CADisplayLink displayLinkWithTarget:weakProxy selector:@selector(displayLinkDidRefresh:)];
 #else
-        SDWeakProxy *weakProxy = [SDWeakProxy proxyWithTarget:self];
+        BarrageWeakProxy *weakProxy = [BarrageWeakProxy proxyWithTarget:self];
         _displayLink = [NSTimer timerWithTimeInterval:kSDDisplayLinkInterval target:weakProxy selector:@selector(displayLinkDidRefresh:) userInfo:nil repeats:YES];
 #endif
     }
@@ -79,7 +79,7 @@ static CVReturn DisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
 }
 
 - (CFTimeInterval)duration {
-#if TARGET_OS_OSX
+#if IS_MAC
     CVTimeStamp outputTime = self.outputTime;
     NSTimeInterval duration = 0;
     double periodPerSecond = (double)outputTime.videoTimeScale * outputTime.rateScalar;
@@ -105,7 +105,7 @@ static CVReturn DisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
 }
 
 - (BOOL)isRunning {
-#if TARGET_OS_OSX
+#if IS_MAC
     return CVDisplayLinkIsRunning(self.displayLink);
 #elif TARGET_OS_IOS || TARGET_OS_TV
     return !self.displayLink.isPaused;
@@ -118,7 +118,7 @@ static CVReturn DisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
     if  (!runloop || !mode) {
         return;
     }
-#if TARGET_OS_OSX
+#if IS_MAC
     self.runloopMode = mode;
 #elif TARGET_OS_IOS || TARGET_OS_TV
     [self.displayLink addToRunLoop:runloop forMode:mode];
@@ -141,7 +141,7 @@ static CVReturn DisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
     if  (!runloop || !mode) {
         return;
     }
-#if TARGET_OS_OSX
+#if IS_MAC
     self.runloopMode = nil;
 #elif TARGET_OS_IOS || TARGET_OS_TV
     [self.displayLink removeFromRunLoop:runloop forMode:mode];
@@ -161,7 +161,7 @@ static CVReturn DisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
 }
 
 - (void)start {
-#if TARGET_OS_OSX
+#if IS_MAC
     CVDisplayLinkStart(self.displayLink);
 #elif TARGET_OS_IOS || TARGET_OS_TV
     self.displayLink.paused = NO;
@@ -169,7 +169,7 @@ static CVReturn DisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
     if (self.displayLink.isValid) {
         [self.displayLink fire];
     } else {
-        SDWeakProxy *weakProxy = [SDWeakProxy proxyWithTarget:self];
+        BarrageWeakProxy *weakProxy = [BarrageWeakProxy proxyWithTarget:self];
         self.displayLink = [NSTimer timerWithTimeInterval:kSDDisplayLinkInterval target:weakProxy selector:@selector(displayLinkDidRefresh:) userInfo:nil repeats:YES];
         [self addToRunLoop:self.runloop forMode:self.runloopMode];
     }
@@ -177,7 +177,7 @@ static CVReturn DisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
 }
 
 - (void)stop {
-#if TARGET_OS_OSX
+#if IS_MAC
     CVDisplayLinkStop(self.displayLink);
 #elif TARGET_OS_IOS || TARGET_OS_TV
     self.displayLink.paused = YES;
@@ -187,7 +187,7 @@ static CVReturn DisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
 }
 
 - (void)displayLinkDidRefresh:(id)displayLink {
-#if TARGET_OS_OSX
+#if IS_MAC
     // CVDisplayLink does not use runloop, but we can provide similar behavior for modes
     // May use `default` runloop to avoid extra callback when in `eventTracking` (mouse drag, scroll) or `modalPanel` (modal panel)
     NSString *runloopMode = self.runloopMode;
@@ -206,7 +206,7 @@ static CVReturn DisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
 
 @end
 
-#if TARGET_OS_OSX
+#if IS_MAC
 static CVReturn DisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeStamp *inNow, const CVTimeStamp *inOutputTime, CVOptionFlags flagsIn, CVOptionFlags *flagsOut, void *displayLinkContext) {
     // CVDisplayLink callback is not on main queue
     BarrageDisplayLink *object = (__bridge BarrageDisplayLink *)displayLinkContext;

@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+#if TARGET_OS_OSX
+#define IS_MAC 0
+#else
+#define IS_MAC 0
+#endif
+
 /// Cross-platform display link wrapper. Do not retain the target
 /// Use `CADisplayLink` on iOS/tvOS, `CVDisplayLink` on macOS, `NSTimer` on watchOS
 @interface BarrageDisplayLink : NSObject
